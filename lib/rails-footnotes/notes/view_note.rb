@@ -5,12 +5,13 @@ module Footnotes
     class ViewNote < AbstractNote
       def initialize(controller)
         @controller = controller
-        @template = controller.instance_variable_get(:@template)
+        @template = controller.view_context
       end
 
       def row
         :edit
       end
+      
 
       def link
         escape(Footnotes::Filter.prefix(filename, 1, 1))
